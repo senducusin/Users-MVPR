@@ -7,8 +7,6 @@
 
 import UIKit
 
-//typealias UserListRouterEntryPoint = UserListTableViewControllerProtocol & UITableViewController
-
 protocol BaseRouterProtocol: AnyObject {
     var navigationController: UINavigationController { get set }
     func returnToParentView()
@@ -16,8 +14,6 @@ protocol BaseRouterProtocol: AnyObject {
 
 protocol UserListRouterProtocol:BaseRouterProtocol {
     func pushToUserDetail(on view: UserListTableViewControllerProtocol, with user: User)
-    func returnToRootController()
-//    var entry: UserListRouterEntryPoint? {get}
 }
 
 class UserListRouter: UserListRouterProtocol {
@@ -49,11 +45,9 @@ class UserListRouter: UserListRouterProtocol {
         router.navigationController.pushViewController(userDetailViewController, animated: true)
     }
     
-    func returnToRootController(){
+    func returnToParentView() {
         navigationController.popToRootViewController(animated: true)
     }
-    
-    func returnToParentView() {}
 }
 
  
